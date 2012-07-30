@@ -1,4 +1,4 @@
 name: PluginTest
-version: 1.0
-main: me.Drehverschluss.PluginTest.PluginTest
+version: 1.1
+main: me.Drehverschluss.HeroesHUD.HeroesHUD
 depend: [ Heroes,Spout ]
