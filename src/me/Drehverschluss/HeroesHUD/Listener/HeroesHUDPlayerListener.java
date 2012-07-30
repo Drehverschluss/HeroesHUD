@@ -42,8 +42,9 @@ public class HeroesHUDPlayerListener implements Listener {
 		HeroClass secclass = hero.getSecondClass();
 		SpoutPlayer sp = SpoutManager.getPlayer(p);
 		
-		double xpprim = hero.currentXPToNextLevel(primclass);
-		double xpsec = hero.currentXPToNextLevel(secclass);
+		int xpprim = (int)Math.round(hero.currentXPToNextLevel(primclass));
+		int xpsec = (int)Math.round(hero.currentXPToNextLevel(secclass));
+		
 		
 		if (hero != null) {
 		
@@ -71,8 +72,8 @@ public class HeroesHUDPlayerListener implements Listener {
 			HeroClass secclass = hero.getSecondClass();
 			SpoutPlayer sp = SpoutManager.getPlayer(p);
 			
-			double xpprim = hero.currentXPToNextLevel(primclass);
-			double xpsec = hero.currentXPToNextLevel(secclass);
+			int xpprim = (int)Math.round(hero.currentXPToNextLevel(primclass));
+			int xpsec = (int)Math.round(hero.currentXPToNextLevel(secclass));
 			
 			if (hero != null) {
 			
@@ -102,8 +103,8 @@ public class HeroesHUDPlayerListener implements Listener {
 			HeroClass secclass = hero.getSecondClass();
 			SpoutPlayer sp = SpoutManager.getPlayer(p);
 			
-			double xpprim = hero.currentXPToNextLevel(primclass);
-			double xpsec = hero.currentXPToNextLevel(secclass);
+			int xpprim = (int)Math.round(hero.currentXPToNextLevel(primclass));
+			int xpsec = (int)Math.round(hero.currentXPToNextLevel(secclass));
 			
 			if (hero != null) {
 			
@@ -132,8 +133,8 @@ public class HeroesHUDPlayerListener implements Listener {
 		HeroClass secclass = hero.getSecondClass();
 		SpoutPlayer sp = SpoutManager.getPlayer(p);
 		
-		double xpprim = hero.currentXPToNextLevel(primclass);
-		double xpsec = hero.currentXPToNextLevel(secclass);
+		int xpprim = (int)Math.round(hero.currentXPToNextLevel(primclass));
+		int xpsec = (int)Math.round(hero.currentXPToNextLevel(secclass));
 		
 		if (hero != null) {
 		
@@ -161,8 +162,8 @@ public class HeroesHUDPlayerListener implements Listener {
 		HeroClass secclass = hero.getSecondClass();
 		SpoutPlayer sp = SpoutManager.getPlayer(p);
 		
-		double xpprim = hero.currentXPToNextLevel(primclass);
-		double xpsec = hero.currentXPToNextLevel(secclass);
+		int xpprim = (int)Math.round(hero.currentXPToNextLevel(primclass));
+		int xpsec = (int)Math.round(hero.currentXPToNextLevel(secclass));
 		
 		if (hero != null) {
 		
@@ -192,24 +193,26 @@ public class HeroesHUDPlayerListener implements Listener {
 		
 		double xpprim = hero.currentXPToNextLevel(primclass);
 		double xpsec = hero.currentXPToNextLevel(secclass);
+		int xpprimround = 0;
+		int xpsecround = 0;
 		
 		if (event.getHeroClass().isPrimary()) {
 			double getprim = event.getExpChange();
-			xpprim = xpprim + getprim;
+			xpprimround = (int)Math.round(xpprim + getprim);
 		}else if (event.getHeroClass().isSecondary()) {
 			double getsec = event.getExpChange();
-			xpsec = xpsec + getsec;
+			xpsecround = (int)Math.round(xpsec + getsec);
 		}
 
 		if (hero != null) {
 		
 		String text = primclass + ": " + ChatColor.RED + hero.getHealth() + " / " + hero.getMaxHealth() +
-				"\n" + ChatColor.DARK_RED + "Lvl/Exp: " + ChatColor.RED + hero.getLevel(primclass) + " / " + xpprim;
+				"\n" + ChatColor.DARK_RED + "Lvl/Exp: " + ChatColor.RED + hero.getLevel(primclass) + " / " + xpprimround;
 
 		if (secclass != null) {
 
 				text += "\n" + ChatColor.DARK_GREEN + "Prof: " + ChatColor.GREEN + secclass + 
-						"\n" + ChatColor.DARK_GREEN + "LvL/Exp: " + ChatColor.GREEN + hero.getLevel(secclass) + " / " + xpsec;
+						"\n" + ChatColor.DARK_GREEN + "LvL/Exp: " + ChatColor.GREEN + hero.getLevel(secclass) + " / " + xpsecround;
 			} else {
 				text += "\n" + ChatColor.DARK_GREEN + "You Dont have a" +
 						"\n" + ChatColor.DARK_GREEN + "Secondary Class!";
@@ -234,13 +237,14 @@ public class HeroesHUDPlayerListener implements Listener {
 			primclass = event.getTo();
 		}
 		
-		double xpprim = hero.currentXPToNextLevel(primclass);
+		int xpprim = (int)Math.round(hero.currentXPToNextLevel(primclass));
+		int xpsec = (int)Math.round(hero.currentXPToNextLevel(secclass));
 		
 		String test = primclass + ": " + ChatColor.RED + hero.getHealth() + " / " + hero.getMaxHealth() +
 				  "\n" + ChatColor.DARK_RED + "Lvl/Exp: " + ChatColor.RED + hero.getLevel(primclass) + " / " + xpprim;
 		
 		if (secclass != null) {
-			double xpsec = hero.currentXPToNextLevel(secclass);
+			
 			test += "\n" + ChatColor.DARK_GREEN + "Prof: " + ChatColor.GREEN + secclass + 
 					"\n" + ChatColor.DARK_GREEN + "LvL/Exp: " + ChatColor.GREEN + hero.getLevel(secclass) + " / " + xpsec;
 		} else {
