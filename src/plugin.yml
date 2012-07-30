@@ -1,0 +1,4 @@
+name: PluginTest
+version: 1.0
+main: me.Drehverschluss.PluginTest.PluginTest
+depend: [ Heroes,Spout ]
