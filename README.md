@@ -1,5 +1,8 @@
 This plugin generates for each player, a HUD that gives you the most important information about your Hero classes.
     
+    V1.5b1 - Added work on new HeroesSelectGui
+    	 - Open the new GUI with the command "/hsg"
+    	 - This GUI is in Beta!
     V1.4 - Added work on Config!
     	 - For now you can choose the vertikal_x and horizontal_y in %.
     	 - Standard is X= 2% / Y=95%, which is at the upper left corner.
