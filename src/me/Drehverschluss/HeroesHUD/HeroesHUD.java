@@ -14,7 +14,7 @@ public class HeroesHUD extends JavaPlugin{
 	
 	
 	private CharacterManager heroManager;
-	private HeroesHUDGUI ptgui; 
+	private HeroesHUDGUI hhgui; 
 
     private void setupHeroManager() {
     	
@@ -28,14 +28,18 @@ public class HeroesHUD extends JavaPlugin{
     }
     
     public HeroesHUDGUI getGUI() {
-    	return ptgui;
+    	return hhgui;
     }
 
 	@Override
 	public void onEnable() {
 		
+		
+		//Alles einschalten
+		getConfig().options().copyDefaults(true);
+		saveConfig();
 		setupHeroManager();
-		manageStuff();	
+		manageStuff();		
 	}
 	
 	public void manageStuff() {		
@@ -43,6 +47,6 @@ public class HeroesHUD extends JavaPlugin{
 		
 		//Listener....
 		pm.registerEvents(new HeroesHUDPlayerListener(this), this);
-		ptgui = new HeroesHUDGUI(this);
+		hhgui = new HeroesHUDGUI(this);
 	}
 }
