@@ -1,6 +1,7 @@
 package me.Drehverschluss.HeroesHUD.Listener;
 
 import me.Drehverschluss.HeroesHUD.HeroesHUD;
+import me.Drehverschluss.HeroesHUD.gui.HeroesSelectGUI;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

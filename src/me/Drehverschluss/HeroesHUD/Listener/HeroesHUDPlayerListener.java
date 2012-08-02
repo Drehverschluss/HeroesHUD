@@ -13,6 +13,8 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerLevelChangeEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.getspout.spoutapi.SpoutManager;
+import org.getspout.spoutapi.event.screen.ButtonClickEvent;
+import org.getspout.spoutapi.gui.Screen;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
 import com.herocraftonline.heroes.api.events.ClassChangeEvent;
@@ -252,6 +254,16 @@ public class HeroesHUDPlayerListener implements Listener {
 					"\n" + ChatColor.DARK_GREEN + "Secondary Class!";
 		}
 		plugin.getGUI().updateLabel(sp,test);
-	}	
+	}
+	
+	@EventHandler
+    public void onButtonClick(ButtonClickEvent event) {
+		
+        Screen screen = event.getScreen();
+        if (screen instanceof GenericWindow) {
+            GenericWindow window = ((GenericWindow) screen);
+            window.onButtonClick(event.getButton());
+        }
+    }
 }
 	

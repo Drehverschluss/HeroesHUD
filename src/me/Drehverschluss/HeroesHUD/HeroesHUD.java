@@ -1,8 +1,8 @@
 package me.Drehverschluss.HeroesHUD;
 
-import me.Drehverschluss.HeroesHUD.Listener.HeroesHUDGUI;
 import me.Drehverschluss.HeroesHUD.Listener.HeroesHUDPlayerListener;
-import me.Drehverschluss.HeroesHUD.Listener.HeroesSelectGUI;
+import me.Drehverschluss.HeroesHUD.gui.HeroesHUDGUI;
+import me.Drehverschluss.HeroesHUD.gui.HeroesSelectGUI;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -23,7 +23,8 @@ public class HeroesHUD extends JavaPlugin{
 	private CharacterManager heroManager;
 	private HeroesHUDGUI hhgui; 
 	
-	public String HeroesSelectGuiBackground;
+	public String HeroesSelectGuiBackgroundMain;
+	public String HeroesSelectGuiBackgroundClasses;
 
     private void setupHeroManager() {
     	
@@ -51,11 +52,18 @@ public class HeroesHUD extends JavaPlugin{
 		setupHeroManager();
 		manageStuff();
 		//GUI Versuch
-		HeroesSelectGuiBackground = config.getString("texture.background", "https://dl.dropbox.com/u/39281853/SpoutServer/backgroundNew.png");
-		if (HeroesSelectGuiBackground.substring(HeroesSelectGuiBackground.length() - 4, HeroesSelectGuiBackground.length()).equalsIgnoreCase(".png")) {
+		HeroesSelectGuiBackgroundMain = config.getString("texture.backgroundMain", "https://dl.dropbox.com/u/39281853/SpoutServer/HeroesHUD/backgroundMain.png");
+		if (HeroesSelectGuiBackgroundMain.substring(HeroesSelectGuiBackgroundMain.length() - 4, HeroesSelectGuiBackgroundMain.length()).equalsIgnoreCase(".png")) {
 			return;
 		}
-		if (Helper.checkURL(HeroesSelectGuiBackground)) {
+		if (Helper.checkURL(HeroesSelectGuiBackgroundMain)) {
+			return;
+		}
+		HeroesSelectGuiBackgroundClasses = config.getString("texture.backgroundClasses", "https://dl.dropbox.com/u/39281853/SpoutServer/HeroesHUD/backgroundClasses.png");
+		if (HeroesSelectGuiBackgroundClasses.substring(HeroesSelectGuiBackgroundClasses.length() -4, HeroesSelectGuiBackgroundClasses.length()).equals(".png")) {
+			return;
+		}
+		if (Helper.checkURL(HeroesSelectGuiBackgroundClasses)) {
 			return;
 		}
 		
