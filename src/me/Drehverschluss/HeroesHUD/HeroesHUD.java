@@ -53,19 +53,26 @@ public class HeroesHUD extends JavaPlugin{
 		manageStuff();
 		//GUI Versuch
 		HeroesSelectGuiBackgroundMain = config.getString("texture.backgroundMain", "https://dl.dropbox.com/u/39281853/SpoutServer/HeroesHUD/backgroundMain.png");
-		if (HeroesSelectGuiBackgroundMain.substring(HeroesSelectGuiBackgroundMain.length() - 4, HeroesSelectGuiBackgroundMain.length()).equalsIgnoreCase(".png")) {
-			return;
-		}
-		if (Helper.checkURL(HeroesSelectGuiBackgroundMain)) {
-			return;
-		}
+//		if (HeroesSelectGuiBackgroundMain.substring(HeroesSelectGuiBackgroundMain.length() - 4, HeroesSelectGuiBackgroundMain.length()).equalsIgnoreCase(".png")) {
+//			System.out.println("FAIL! MainPicture must be a png");
+//			return;
+//		}
+//		if (Helper.checkURL(HeroesSelectGuiBackgroundMain)) {
+//			System.out.println("Fail!Fail!FAIL!");
+//			return;
+//		}
 		HeroesSelectGuiBackgroundClasses = config.getString("texture.backgroundClasses", "https://dl.dropbox.com/u/39281853/SpoutServer/HeroesHUD/backgroundClasses.png");
-		if (HeroesSelectGuiBackgroundClasses.substring(HeroesSelectGuiBackgroundClasses.length() -4, HeroesSelectGuiBackgroundClasses.length()).equals(".png")) {
-			return;
-		}
-		if (Helper.checkURL(HeroesSelectGuiBackgroundClasses)) {
-			return;
-		}
+//		if (HeroesSelectGuiBackgroundClasses.substring(HeroesSelectGuiBackgroundClasses.length() -4, HeroesSelectGuiBackgroundClasses.length()).equals(".png")) {
+//			System.out.println("FAIL! ClassesPicture must be a png");
+//			return;
+//		}
+//		if (Helper.checkURL(HeroesSelectGuiBackgroundClasses)) {
+//			System.out.println("Fail!Fail!FAIL!");
+//			return;
+//		}
+		
+		SpoutManager.getFileManager().addToPreLoginCache(this, HeroesSelectGuiBackgroundClasses);
+		SpoutManager.getFileManager().addToPreLoginCache(this, HeroesSelectGuiBackgroundMain);
 		
 		//CommandListener cmdExecutor = new CommandListener(this);
 		//getCommand("hsg").setExecutor(cmdExecutor);

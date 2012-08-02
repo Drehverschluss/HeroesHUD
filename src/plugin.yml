@@ -1,5 +1,5 @@
 name: HeroesHUD
-version: 1.5beta2
+version: 1.5beta3
 main: me.Drehverschluss.HeroesHUD.HeroesHUD
 depend: [ Heroes,Spout ]
 commands:

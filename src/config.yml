@@ -1,6 +1,7 @@
-Config:
+ndConfig:
     Position:
         vertikal_x: 2
         horizontal_y: 95
 texturen:
-    background: https://dl.dropbox.com/u/39281853/SpoutServer/background.png
+    backgroundMain: https://dl.dropbox.com/u/39281853/SpoutServer/HeroesHUD/backgroundMain.png
+    backgroundClasses: https://dl.dropbox.com/u/39281853/SpoutServer/HeroesHUD/backgroundClasses.png

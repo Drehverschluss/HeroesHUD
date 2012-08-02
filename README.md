@@ -1,6 +1,7 @@
 This plugin generates for each player, a HUD that gives you the most important information about your Hero classes.
     
     
+    V1.5b3 - Wuhu the Primary button works!
     V1.5b2 - New Background for GUI!
     V1.5b1 - Added work on new HeroesSelectGui
     	 - Open the new GUI with the command "/hsg"
