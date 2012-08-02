@@ -51,7 +51,7 @@ public class HeroesHUD extends JavaPlugin{
 		setupHeroManager();
 		manageStuff();
 		//GUI Versuch
-		HeroesSelectGuiBackground = config.getString("texture.background", "https://dl.dropbox.com/u/39281853/SpoutServer/background.png");
+		HeroesSelectGuiBackground = config.getString("texture.background", "https://dl.dropbox.com/u/39281853/SpoutServer/backgroundNew.png");
 		if (HeroesSelectGuiBackground.substring(HeroesSelectGuiBackground.length() - 4, HeroesSelectGuiBackground.length()).equalsIgnoreCase(".png")) {
 			return;
 		}

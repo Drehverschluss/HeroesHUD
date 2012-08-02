@@ -29,28 +29,28 @@ public class HeroesSelectGUI extends GenericPopup {
 		
 		//Button1
 		button1 = new GenericButton();
-		button1.setText("Select");
+		button1.setText("Primary");
 		button1.setWidth(GenericLabel.getStringWidth(button1.getText()) + 5 + 30).setHeight(GenericLabel.getStringHeight(button1.getText()) + 5);
-		button1.setX(background.getX() + 46);
-		button1.setY(background.getY() + 103);
+		button1.setX(background.getX() + 20);
+		button1.setY(background.getY() + 65);
 		button1.setDirty(true);
         button1.setAutoDirty(true);
         
 		//Button2
 		button2 = new GenericButton();
-		button2.setText("Select");
+		button2.setText("Profession");
 		button2.setWidth(GenericLabel.getStringWidth(button2.getText()) + 5 + 30).setHeight(GenericLabel.getStringHeight(button2.getText()) + 5);
-		button2.setX(background.getX() + 225);
-		button2.setY(background.getY() + 103);
+		button2.setX(background.getX() + 235);
+		button2.setY(background.getY() + 65);
 		button2.setDirty(true);
         button2.setAutoDirty(true);
         
         //Button3
         button3 = new GenericButton();
-		button3.setText("Select");
+		button3.setText("Spezialisation");
 		button3.setWidth(GenericLabel.getStringWidth(button3.getText()) + 5 + 30).setHeight(GenericLabel.getStringHeight(button3.getText()) + 5);
-		button3.setX(background.getX() + 141);
-		button3.setY(background.getY() + 145 + button1.getHeight());
+		button3.setX(background.getX() + 125);
+		button3.setY(background.getY() + 140 + button1.getHeight());
 		button3.setDirty(true);
         button3.setAutoDirty(true);
 		
