@@ -3,6 +3,7 @@ package me.Drehverschluss.HeroesHUD;
 import me.Drehverschluss.HeroesHUD.Listener.HeroesHUDPlayerListener;
 import me.Drehverschluss.HeroesHUD.gui.HeroesHUDGUI;
 import me.Drehverschluss.HeroesHUD.gui.HeroesSelectGUI;
+//import me.Drehverschluss.test.HeroesHUDHealthBar;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -16,12 +17,13 @@ import org.getspout.spoutapi.player.SpoutPlayer;
 
 import com.herocraftonline.heroes.Heroes;
 import com.herocraftonline.heroes.characters.CharacterManager;
+import com.herocraftonline.heroes.characters.classes.HeroClassManager;
 
 public class HeroesHUD extends JavaPlugin{
 	
-	
 	private CharacterManager heroManager;
-	private HeroesHUDGUI hhgui; 
+	private HeroClassManager classManager;
+	private HeroesHUDGUI hhgui;
 	
 	public String HeroesSelectGuiBackgroundMain;
 	public String HeroesSelectGuiBackgroundClasses;
@@ -31,6 +33,17 @@ public class HeroesHUD extends JavaPlugin{
         Plugin plugin = getServer().getPluginManager().getPlugin("Heroes");
  
         heroManager = ((Heroes) plugin).getCharacterManager();
+    }
+    
+    private void setupClassManager() {
+    	
+    	Plugin plugin = getServer().getPluginManager().getPlugin("Heroes");
+    	
+    	classManager = ((Heroes) plugin).getClassManager();
+    }
+    
+    public HeroClassManager getClassManager() {
+    	return classManager;
     }
  
     public CharacterManager getHeroManager() {
@@ -50,9 +63,10 @@ public class HeroesHUD extends JavaPlugin{
 		config.options().copyDefaults(true);
 		saveConfig();
 		setupHeroManager();
+		setupClassManager();
 		manageStuff();
 		//GUI Versuch
-		HeroesSelectGuiBackgroundMain = config.getString("texture.backgroundMain", "https://dl.dropbox.com/u/39281853/SpoutServer/HeroesHUD/backgroundMain.png");
+		HeroesSelectGuiBackgroundMain = config.getString("texturen.backgroundMain", "https://dl.dropbox.com/u/39281853/SpoutServer/HeroesHUD/backgroundMain.png");
 //		if (HeroesSelectGuiBackgroundMain.substring(HeroesSelectGuiBackgroundMain.length() - 4, HeroesSelectGuiBackgroundMain.length()).equalsIgnoreCase(".png")) {
 //			System.out.println("FAIL! MainPicture must be a png");
 //			return;
@@ -61,7 +75,7 @@ public class HeroesHUD extends JavaPlugin{
 //			System.out.println("Fail!Fail!FAIL!");
 //			return;
 //		}
-		HeroesSelectGuiBackgroundClasses = config.getString("texture.backgroundClasses", "https://dl.dropbox.com/u/39281853/SpoutServer/HeroesHUD/backgroundClasses.png");
+		HeroesSelectGuiBackgroundClasses = config.getString("texturen.backgroundClasses", "https://dl.dropbox.com/u/39281853/SpoutServer/HeroesHUD/backgroundClasses.png");
 //		if (HeroesSelectGuiBackgroundClasses.substring(HeroesSelectGuiBackgroundClasses.length() -4, HeroesSelectGuiBackgroundClasses.length()).equals(".png")) {
 //			System.out.println("FAIL! ClassesPicture must be a png");
 //			return;
@@ -90,13 +104,12 @@ public class HeroesHUD extends JavaPlugin{
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if ((sender instanceof Player)) {
 			
-			
 			Player player = (Player) sender;
 			SpoutPlayer spoutp = SpoutManager.getPlayer(player);
+			
 			if(cmd.getName().equalsIgnoreCase("hsg")) {
 				if(args.length == 0) {
 					spoutp.getMainScreen().attachPopupScreen(new HeroesSelectGUI(this, spoutp));
-					
 				}
 			}
 		}

@@ -9,11 +9,11 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityRegainHealthEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerLevelChangeEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.getspout.spoutapi.SpoutManager;
 import org.getspout.spoutapi.event.screen.ButtonClickEvent;
+import org.getspout.spoutapi.event.spout.SpoutCraftEnableEvent;
 import org.getspout.spoutapi.gui.Screen;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
@@ -36,7 +36,7 @@ public class HeroesHUDPlayerListener implements Listener {
 	}
 	
 	@EventHandler
-	public void onPlayerJoin(PlayerJoinEvent event) {
+	public void onSpoutCraftLogin(SpoutCraftEnableEvent event) {
 		
 		Player p = event.getPlayer();
 		Hero hero = plugin.getHeroManager().getHero(p);
@@ -46,7 +46,6 @@ public class HeroesHUDPlayerListener implements Listener {
 		
 		int xpprim = (int)Math.round(hero.currentXPToNextLevel(primclass));
 		int xpsec = (int)Math.round(hero.currentXPToNextLevel(secclass));
-		
 		
 		if (hero != null) {
 		

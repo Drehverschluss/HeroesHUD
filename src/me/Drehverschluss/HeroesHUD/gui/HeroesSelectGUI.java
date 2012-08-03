@@ -71,7 +71,13 @@ public class HeroesSelectGUI extends GenericWindow {
 
 		if (button.equals(button1)) {
 			spoutp.getMainScreen().getActivePopup().close();
-			spoutp.getMainScreen().attachPopupScreen(new ClassesGUI(plugin, spoutp));
+			spoutp.getMainScreen().attachPopupScreen(new PrimClassesGUI(plugin, spoutp));
+		} else if (button.equals(button2)) {
+			spoutp.getMainScreen().getActivePopup().close();
+			spoutp.getMainScreen().attachPopupScreen(new ProfClassesGUI(plugin, spoutp));
+		} else if (button.equals(button3)) {
+			spoutp.getMainScreen().getActivePopup().close();
+			spoutp.getMainScreen().attachPopupScreen(new SpecClassesGUI(plugin, spoutp));
 		}
 	}
 

@@ -54,7 +54,6 @@ public class HeroesHUDGUI {
 		label.setY(screen.getHeight() - (int)(screen.getHeight() * (pos_y/100)));
 		
 		labels.put(player.getName(), label);
-		
 		screen.attachWidget(plugin, label);	
 	}
 	
