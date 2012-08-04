@@ -11,7 +11,6 @@ import org.getspout.spoutapi.gui.RenderPriority;
 import org.getspout.spoutapi.gui.WidgetAnchor;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
-import com.herocraftonline.heroes.characters.Hero;
 import com.herocraftonline.heroes.characters.classes.HeroClass;
 
 import me.Drehverschluss.HeroesHUD.HeroesHUD;
@@ -22,7 +21,7 @@ public class ProfClassesGUI extends GenericWindow {
 	private HeroesHUD plugin;
 	private Button buttonBack;
 	private SpoutPlayer spoutp;
-	private final int verticalSpace = 35, horizontalSpace = 20;
+	private final int verticalSpace = 15, horizontalSpace = 11;
 	
 	public ProfClassesGUI(HeroesHUD plugin, SpoutPlayer spoutp) {
 		this.plugin = plugin;
@@ -56,21 +55,18 @@ public class ProfClassesGUI extends GenericWindow {
 		int rows = 0;
 		int index = 0;
 		int basicX = backgroundClasses.getX() + 20;
-		int basicY = backgroundClasses.getY() + 15;
+		int basicY = backgroundClasses.getY() + 50;
 		
 		List<HeroClass> classes = new ArrayList<HeroClass>( plugin.getClassManager().getClasses());
 		
 		for (int i = 0; i < classes.size(); i++) {
 			HeroClass heroClass = classes.get(i);
-			Hero hero = plugin.getHeroManager().getHero(spoutp);
 			
-			if (heroClass.isPrimary() || heroClass.isDefault() || heroClass.getName().equals("Admin") || hero.getSecondClass().equals(heroClass)) {
+			if (heroClass.isPrimary() || heroClass.isDefault() || heroClass.getName().equals("Admin")) {
 				continue;
 			}
-		
-			columns++;
 			
-			if (index != 0 && index % 4 == 0) {
+			if (index != 0 && index % 5 == 0) {
 				rows++;
 				columns = 0;
 			}
@@ -83,7 +79,7 @@ public class ProfClassesGUI extends GenericWindow {
 			button.setY(basicY + (columns * (horizontalSpace + button.getHeight())));
 			button.setTooltip(heroClass.getDescription());
 			super.attachWidget(plugin, button);
-		
+			columns++;
 		}
 	}
 	
@@ -92,8 +88,9 @@ public class ProfClassesGUI extends GenericWindow {
 		for (HeroClass heroClass : plugin.getClassManager().getClasses()) {
 			if (button.getText().equals(heroClass.getName())) {
 				spoutp.chat("/hero prof " + heroClass.getName());
+				String choosenClass = heroClass.getName();
 				spoutp.getMainScreen().getActivePopup().close();
-				spoutp.getMainScreen().attachPopupScreen(new ChooseGUI(plugin, spoutp));
+				spoutp.getMainScreen().attachPopupScreen(new ChooseGUI(plugin, spoutp, choosenClass));
 			}
 		}
 		

@@ -1,5 +1,9 @@
 package me.Drehverschluss.HeroesHUD.gui;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.bukkit.ChatColor;
 import org.getspout.spoutapi.gui.Button;
 import org.getspout.spoutapi.gui.GenericButton;
 import org.getspout.spoutapi.gui.GenericLabel;
@@ -7,6 +11,8 @@ import org.getspout.spoutapi.gui.GenericTexture;
 import org.getspout.spoutapi.gui.RenderPriority;
 import org.getspout.spoutapi.gui.WidgetAnchor;
 import org.getspout.spoutapi.player.SpoutPlayer;
+
+import com.herocraftonline.heroes.characters.classes.HeroClass;
 
 import me.Drehverschluss.HeroesHUD.HeroesHUD;
 import me.Drehverschluss.HeroesHUD.Listener.GenericWindow;
@@ -18,10 +24,12 @@ public class ChooseGUI extends GenericWindow {
 	private Button buttonCancel;
 	private Button buttonBack;
 	private SpoutPlayer spoutp;
+	private final int VERTICAL_SPACE = 2, HORIZONTAL_SPACE = 75;
 	
-	public ChooseGUI(HeroesHUD plugin, SpoutPlayer spoutp) {
+	public ChooseGUI(HeroesHUD plugin, SpoutPlayer spoutp, String choosenClass) {
 		this.plugin = plugin;
 		this.spoutp = spoutp;
+
 		
 		int screenWidth = spoutp.getMainScreen().getWidth();
 		int screenHeight = spoutp.getMainScreen().getHeight();
@@ -61,11 +69,55 @@ public class ChooseGUI extends GenericWindow {
 		buttonBack.setDirty(true);
 		buttonBack.setAutoDirty(true);
 		
-		//Label Beginn
-		//GenericLabel label = new GenericLabel();
 		
-		super.attachWidgets(plugin, backgroundClasses, buttonConfirm, buttonCancel, buttonBack);
-		super.setAnchor(WidgetAnchor.TOP_LEFT);
+		//Label Beginn
+		List<String> classesSkills = new ArrayList<String>( plugin.getClassManager().getClass(choosenClass).getSkillNames());
+		int columns = 0;
+		int rows = 0;
+		int index = 0;
+		int basicX = backgroundClasses.getX() + 20;
+		int basicY = backgroundClasses.getY() + 45;
+		
+		for (int i = 0; i < classesSkills.size(); i++) {
+			String classSkills = classesSkills.get(i);
+			
+			
+			if (index != 0 && index % 9 == 0) {
+				rows++;
+				columns = 0;
+			}
+			
+			index++;
+		
+			//System.out.println(classSkills);
+		
+			GenericLabel label1 = new GenericLabel();
+			label1.setText(classSkills);
+			label1.setWidth(GenericLabel.getStringWidth(label1.getText()));
+			label1.setHeight(GenericLabel.getStringHeight(label1.getText()));
+			label1.setX(basicX + 180 + (rows * (HORIZONTAL_SPACE)));
+			label1.setY(basicY + (columns * (VERTICAL_SPACE + GenericLabel.getStringHeight(label1.getText()))));
+			label1.setDirty(true);
+			label1.setAutoDirty(true);
+			
+			columns++;
+			
+			HeroClass heroClass = plugin.getClassManager().getClass(choosenClass);
+			GenericLabel label2 = new GenericLabel();
+			label2.setText("-=[" + ChatColor.GOLD + heroClass.getName() + ChatColor.WHITE + "]=-" + 
+					"\n" + ChatColor.BLACK + "--------------" + 
+					"\n" + ChatColor.DARK_RED + "Health: " + heroClass.getBaseMaxHealth() + 
+					"\n" + ChatColor.BLUE + "Mana: " + heroClass.getBaseMaxMana());
+			label2.setWidth(GenericLabel.getStringWidth(label1.getText()));
+			label2.setHeight(GenericLabel.getStringHeight(label1.getText()));
+			label2.setX(basicX);
+			label2.setY(basicY);
+			label2.setShadow(false);
+			
+			
+			super.attachWidgets(plugin, backgroundClasses, buttonConfirm, buttonCancel, buttonBack, label1, label2);
+			super.setAnchor(WidgetAnchor.TOP_LEFT);
+		}
 	}
 	
 	@Override

@@ -1,5 +1,7 @@
 This plugin generates for each player, a HUD that gives you the most important information about your Hero classes.
     
+    V1.5b5 - Alot More feature on Prim and Prof Buttons!
+    	 - Bug fixed wich happens if you dont have a Secound class and you try to push the button!
     V1.5b4 - More Work on the SelectGUI!
     	 - Now Primary Works and Profession Button works!
     V1.5b3 - Wuhu the Primary button works!

@@ -17,7 +17,9 @@ public class PrimClassesGUI extends GenericWindow {
 	private HeroesHUD plugin;
 	private Button buttonBack;
 	private SpoutPlayer spoutp;
-	private final int verticalSpace = 35, horizontalSpace = 20;
+	private final int VERTICAL_SPACE = 15, HORIZONTAL_SPACE = 11;
+	
+//	public static String abc;
 	
 	
 	public PrimClassesGUI(HeroesHUD plugin, SpoutPlayer spoutp) {
@@ -52,21 +54,20 @@ public class PrimClassesGUI extends GenericWindow {
 		int rows = 0;
 		int index = 0;
 		int basicX = backgroundClasses.getX() + 20;
-		int basicY = backgroundClasses.getY() + 15;
+		int basicY = backgroundClasses.getY() + 50;
 		
 		List<HeroClass> classes = new ArrayList<HeroClass>( plugin.getClassManager().getClasses());
 		
 		for (int i = 0; i < classes.size(); i++) {
 			HeroClass heroClass = classes.get(i);
-			Hero hero = plugin.getHeroManager().getHero(spoutp);
+			//System.out.println(heroClass); // da bekomm ichs dann in der liste!
 			
+			Hero hero = plugin.getHeroManager().getHero(spoutp);
 			if (heroClass.isSecondary() || heroClass.isDefault() || heroClass.getName().equals("Admin") || hero.getHeroClass().equals(heroClass)) {
 				continue;
 			}
-		
-			columns++;
 			
-			if (index != 0 && index % 4 == 0) {
+			if (index != 0 && index % 5 == 0) {
 				rows++;
 				columns = 0;
 			}
@@ -75,30 +76,29 @@ public class PrimClassesGUI extends GenericWindow {
 			
 			Button button = new GenericButton(heroClass.getName());
 			button.setWidth(65).setHeight(GenericLabel.getStringHeight(button.getText()) + 6);
-			button.setX(basicX + (rows * (verticalSpace + button.getWidth())));
-			button.setY(basicY + (columns * (horizontalSpace + button.getHeight())));
+			button.setX(basicX + (rows * (VERTICAL_SPACE + button.getWidth())));
+			button.setY(basicY + (columns * (HORIZONTAL_SPACE + button.getHeight())));
 			button.setTooltip(heroClass.getDescription());
 			super.attachWidget(plugin, button);
-		
+			
+			columns++;
+			
 		}
-
-	
 	}
-
+	
 	@Override
 	public void onButtonClick(Button button) {
 		for (HeroClass heroClass : plugin.getClassManager().getClasses()) {
 			if (button.getText().equals(heroClass.getName())) {
 				spoutp.chat("/hero choose " + heroClass.getName());
+				String choosenClass = heroClass.getName();
 				spoutp.getMainScreen().getActivePopup().close();
-				spoutp.getMainScreen().attachPopupScreen(new ChooseGUI(plugin, spoutp));
+				spoutp.getMainScreen().attachPopupScreen(new ChooseGUI(plugin, spoutp, choosenClass));
 			}
 		}
 		if (button.equals(buttonBack)) {
 			spoutp.getMainScreen().getActivePopup().close();
 			spoutp.getMainScreen().attachPopupScreen(new HeroesSelectGUI(plugin, spoutp));
 		}
-		
 	}
-
 }
