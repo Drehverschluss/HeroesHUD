@@ -9,7 +9,7 @@ import org.getspout.spoutapi.player.SpoutPlayer;
 public class HeroesSelectGUI extends GenericWindow {
 
 	private HeroesHUD plugin;
-	private Button button1, button2, button3;
+	private Button button1, button2;
 	private SpoutPlayer spoutp;
 
 	public HeroesSelectGUI(HeroesHUD plugin, SpoutPlayer spoutp) {
@@ -50,15 +50,15 @@ public class HeroesSelectGUI extends GenericWindow {
 		button2.setAutoDirty(true);
 
 		// Button3 Main
-		button3 = new GenericButton();
-		button3.setText("Spezialisation");
-		button3.setWidth(GenericLabel.getStringWidth(button3.getText()) + 5 + 30).setHeight(GenericLabel.getStringHeight(button3.getText()) + 5);
-		button3.setX(backgroundMain.getX() + 125);
-		button3.setY(backgroundMain.getY() + 140 + button1.getHeight());
-		button3.setDirty(true);
-		button3.setAutoDirty(true);
+//		button3 = new GenericButton();
+//		button3.setText("Spezialisation");
+//		button3.setWidth(GenericLabel.getStringWidth(button3.getText()) + 5 + 30).setHeight(GenericLabel.getStringHeight(button3.getText()) + 5);
+//		button3.setX(backgroundMain.getX() + 125);
+//		button3.setY(backgroundMain.getY() + 140 + button1.getHeight());
+//		button3.setDirty(true);
+//		button3.setAutoDirty(true);
 
-		super.attachWidgets(plugin, backgroundMain, button1, button2, button3);
+		super.attachWidgets(plugin, backgroundMain, button1, button2);
 		super.setAnchor(WidgetAnchor.TOP_LEFT);
 	}
 
@@ -75,9 +75,6 @@ public class HeroesSelectGUI extends GenericWindow {
 		} else if (button.equals(button2)) {
 			spoutp.getMainScreen().getActivePopup().close();
 			spoutp.getMainScreen().attachPopupScreen(new ProfClassesGUI(plugin, spoutp));
-		} else if (button.equals(button3)) {
-			spoutp.getMainScreen().getActivePopup().close();
-			spoutp.getMainScreen().attachPopupScreen(new SpecClassesGUI(plugin, spoutp));
 		}
 	}
 

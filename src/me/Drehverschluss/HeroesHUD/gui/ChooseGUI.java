@@ -26,6 +26,8 @@ public class ChooseGUI extends GenericWindow {
 	private SpoutPlayer spoutp;
 	private final int VERTICAL_SPACE = 2, HORIZONTAL_SPACE = 75;
 	
+	private String abc;
+	
 	public ChooseGUI(HeroesHUD plugin, SpoutPlayer spoutp, String choosenClass) {
 		this.plugin = plugin;
 		this.spoutp = spoutp;
@@ -62,7 +64,7 @@ public class ChooseGUI extends GenericWindow {
 		buttonCancel.setAutoDirty(true);
 		
 		buttonBack = new GenericButton();
-		buttonBack.setText("Back to Menu");
+		buttonBack.setText("Spezialisations");
 		buttonBack.setWidth(GenericLabel.getStringWidth(buttonBack.getText()) + 5 + 30).setHeight(GenericLabel.getStringHeight(buttonBack.getText()) + 5);
 		buttonBack.setX(backgroundClasses.getX() + 123);
 		buttonBack.setY(backgroundClasses.getY() + 150 + buttonBack.getHeight());
@@ -72,17 +74,18 @@ public class ChooseGUI extends GenericWindow {
 		
 		//Label Beginn
 		List<String> classesSkills = new ArrayList<String>( plugin.getClassManager().getClass(choosenClass).getSkillNames());
+		
 		int columns = 0;
 		int rows = 0;
 		int index = 0;
-		int basicX = backgroundClasses.getX() + 20;
+		int basicX = backgroundClasses.getX() + 10;
 		int basicY = backgroundClasses.getY() + 45;
 		
 		for (int i = 0; i < classesSkills.size(); i++) {
 			String classSkills = classesSkills.get(i);
 			
 			
-			if (index != 0 && index % 9 == 0) {
+			if (index != 0 && index % 10 == 0) {
 				rows++;
 				columns = 0;
 			}
@@ -90,7 +93,8 @@ public class ChooseGUI extends GenericWindow {
 			index++;
 		
 			//System.out.println(classSkills);
-		
+			
+			//Label mit Skills Max = 20 Skills
 			GenericLabel label1 = new GenericLabel();
 			label1.setText(classSkills);
 			label1.setWidth(GenericLabel.getStringWidth(label1.getText()));
@@ -102,20 +106,36 @@ public class ChooseGUI extends GenericWindow {
 			
 			columns++;
 			
+			//Label mit KlassesnNamen
 			HeroClass heroClass = plugin.getClassManager().getClass(choosenClass);
 			GenericLabel label2 = new GenericLabel();
-			label2.setText("-=[" + ChatColor.GOLD + heroClass.getName() + ChatColor.WHITE + "]=-" + 
-					"\n" + ChatColor.BLACK + "--------------" + 
-					"\n" + ChatColor.DARK_RED + "Health: " + heroClass.getBaseMaxHealth() + 
-					"\n" + ChatColor.BLUE + "Mana: " + heroClass.getBaseMaxMana());
-			label2.setWidth(GenericLabel.getStringWidth(label1.getText()));
-			label2.setHeight(GenericLabel.getStringHeight(label1.getText()));
+			label2.setText(ChatColor.GOLD + heroClass.getName());
+			abc = heroClass.getName();
+			label2.setHeight(GenericLabel.getStringHeight(label2.getText()));
+			label2.setScale(2);
 			label2.setX(basicX);
 			label2.setY(basicY);
-			label2.setShadow(false);
+			label2.setShadow(true);
 			
+			//Neuer Label! Armor und so!
+			GenericLabel label3 = new GenericLabel();
+			label3.setText(ChatColor.BLACK + "-------------------------" + 
+					"\n" + ChatColor.DARK_GREEN + "MaxLevel: " + heroClass.getMaxLevel() + 
+					"\n" + "BaseHealth: " + ChatColor.DARK_RED + heroClass.getBaseMaxHealth() + 
+					"\n" + "Health / Level: " + ChatColor.RED + heroClass.getMaxHealthPerLevel() + 
+					"\n" + 
+					"\n" + "BaseMana: " + ChatColor.DARK_BLUE + heroClass.getBaseMaxMana() + 
+					"\n" + "Mana / Level: " + ChatColor.DARK_BLUE + heroClass.getMaxManaPerLevel() + 
+					"\n" + "ManaRegain: " + ChatColor.BLUE + heroClass.getManaRegen() + 
+					"\n" + "ManaRegain / Level: " + ChatColor.BLUE + heroClass.getMaxManaPerLevel());
+			label3.setHeight(GenericLabel.getStringHeight(label3.getText()));
+			label3.setX(basicX);
+			label3.setY(basicY + 20);
+			label3.setShadow(false);
 			
-			super.attachWidgets(plugin, backgroundClasses, buttonConfirm, buttonCancel, buttonBack, label1, label2);
+			//System.out.println(abc);
+			
+			super.attachWidgets(plugin, backgroundClasses, buttonConfirm, buttonCancel, buttonBack, label1, label2, label3);
 			super.setAnchor(WidgetAnchor.TOP_LEFT);
 		}
 	}
@@ -129,11 +149,14 @@ public class ChooseGUI extends GenericWindow {
 		} else if (button.equals(buttonCancel)) {
 			spoutp.chat("/hero cancel");
 			spoutp.getMainScreen().getActivePopup().close();
+			spoutp.getMainScreen().attachPopupScreen(new HeroesSelectGUI(plugin, spoutp));
 			
 		} else if (button.equals(buttonBack)) {
 			spoutp.chat("/hero cancel");
+			String heroName = plugin.getClassManager().getClass(abc).getName();
+			System.out.println(heroName); //der name wenn man auf spec drückt!
 			spoutp.getMainScreen().getActivePopup().close();
-			spoutp.getMainScreen().attachPopupScreen(new HeroesSelectGUI(plugin, spoutp));
+			spoutp.getMainScreen().attachPopupScreen(new SpecClassesGUI(plugin, spoutp, heroName));
 		}
 	}
 }

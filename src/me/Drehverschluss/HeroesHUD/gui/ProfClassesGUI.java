@@ -62,7 +62,7 @@ public class ProfClassesGUI extends GenericWindow {
 		for (int i = 0; i < classes.size(); i++) {
 			HeroClass heroClass = classes.get(i);
 			
-			if (heroClass.isPrimary() || heroClass.isDefault() || heroClass.getName().equals("Admin")) {
+			if (heroClass.isPrimary() || heroClass.getName().equals("Admin") || !heroClass.hasNoParents()) {
 				continue;
 			}
 			
@@ -86,8 +86,9 @@ public class ProfClassesGUI extends GenericWindow {
 	@Override
 	public void onButtonClick(Button button) {
 		for (HeroClass heroClass : plugin.getClassManager().getClasses()) {
+			
 			if (button.getText().equals(heroClass.getName())) {
-				spoutp.chat("/hero prof " + heroClass.getName());
+				spoutp.chat("/hero profession " + heroClass.getName());
 				String choosenClass = heroClass.getName();
 				spoutp.getMainScreen().getActivePopup().close();
 				spoutp.getMainScreen().attachPopupScreen(new ChooseGUI(plugin, spoutp, choosenClass));

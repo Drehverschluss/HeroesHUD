@@ -6,7 +6,6 @@ import java.util.List;
 import org.getspout.spoutapi.gui.*;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
-import com.herocraftonline.heroes.characters.Hero;
 import com.herocraftonline.heroes.characters.classes.HeroClass;
 
 import me.Drehverschluss.HeroesHUD.HeroesHUD;
@@ -18,9 +17,6 @@ public class PrimClassesGUI extends GenericWindow {
 	private Button buttonBack;
 	private SpoutPlayer spoutp;
 	private final int VERTICAL_SPACE = 15, HORIZONTAL_SPACE = 11;
-	
-//	public static String abc;
-	
 	
 	public PrimClassesGUI(HeroesHUD plugin, SpoutPlayer spoutp) {
 		this.plugin = plugin;
@@ -62,8 +58,7 @@ public class PrimClassesGUI extends GenericWindow {
 			HeroClass heroClass = classes.get(i);
 			//System.out.println(heroClass); // da bekomm ichs dann in der liste!
 			
-			Hero hero = plugin.getHeroManager().getHero(spoutp);
-			if (heroClass.isSecondary() || heroClass.isDefault() || heroClass.getName().equals("Admin") || hero.getHeroClass().equals(heroClass)) {
+			if (heroClass.isSecondary() || heroClass.getName().equals("Admin") || !heroClass.hasNoParents()) {
 				continue;
 			}
 			
