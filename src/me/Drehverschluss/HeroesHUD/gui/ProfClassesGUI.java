@@ -88,7 +88,7 @@ public class ProfClassesGUI extends GenericWindow {
 		for (HeroClass heroClass : plugin.getClassManager().getClasses()) {
 			
 			if (button.getText().equals(heroClass.getName())) {
-				spoutp.chat("/hero profession " + heroClass.getName());
+				spoutp.chat("/hero prof " + heroClass.getName());
 				String choosenClass = heroClass.getName();
 				spoutp.getMainScreen().getActivePopup().close();
 				spoutp.getMainScreen().attachPopupScreen(new ChooseGUI(plugin, spoutp, choosenClass));

@@ -1,5 +1,6 @@
 This plugin generates for each player, a HUD that gives you the most important information about your Hero classes.
     
+    V1.5b7 - Bug fix for "/hero prof" command!
     v1.5b6 - Work on GUI.
     	 - Changed position From Spezialisations Button.
     	 - Now you become always the correct Specs for the choosen class.
