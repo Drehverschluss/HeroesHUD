@@ -88,10 +88,17 @@ public class SpecClassesGUI extends GenericWindow {
 	public void onButtonClick(Button button) {
 		for (HeroClass heroClass : plugin.getClassManager().getClasses()) {
 			if (button.getText().equals(heroClass.getName())) {
+				if (heroClass.isSecondary()) {
+					spoutp.chat("/hero prof " + heroClass.getName());
+					String choosenClass = heroClass.getName();
+					spoutp.getMainScreen().getActivePopup().close();
+					spoutp.getMainScreen().attachPopupScreen(new ChooseGUI(plugin, spoutp, choosenClass));
+				} else {
 				spoutp.chat("/hero choose " + heroClass.getName());
 				String choosenClass = heroClass.getName();
 				spoutp.getMainScreen().getActivePopup().close();
 				spoutp.getMainScreen().attachPopupScreen(new ChooseGUI(plugin, spoutp, choosenClass));
+				}
 			}
 		}
 		if (button.equals(buttonBack)) {

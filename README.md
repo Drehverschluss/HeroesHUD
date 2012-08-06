@@ -1,5 +1,13 @@
 This plugin generates for each player, a HUD that gives you the most important information about your Hero classes.
+
+Also a new Feature wich work great without Adding anything in the COnfig is the Heroes Select GUI.
+Simply type in chat "/hsg" and the GUI opens.
+Support ups to 18 Different Class Buttons.
+Support for Spezialclasses to only become a list from available classes for the MasteredClass.
     
+    V1.5 - Version Release! Select GUI is DONE!
+    	 - Bug fix for Spezialisation Page when you try to get a Profession Spec!
+    	 - Some Code cleanup.
     V1.5b7 - Bug fix for "/hero prof" command!
     v1.5b6 - Work on GUI.
     	 - Changed position From Spezialisations Button.

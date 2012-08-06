@@ -48,7 +48,7 @@ public class HeroesHUDPlayerListener implements Listener {
 		int xpsec = (int)Math.round(hero.currentXPToNextLevel(secclass));
 		
 		if (hero != null) {
-		
+			
 			String text = primclass + ": " + ChatColor.RED + hero.getHealth() + " / " + hero.getMaxHealth() +
 					  "\n" + ChatColor.DARK_RED + "Lvl/Exp: " + ChatColor.RED + hero.getLevel(primclass) + " / " + xpprim;
 			
@@ -77,7 +77,7 @@ public class HeroesHUDPlayerListener implements Listener {
 			int xpsec = (int)Math.round(hero.currentXPToNextLevel(secclass));
 			
 			if (hero != null) {
-			
+				
 				String text = primclass + ": " + ChatColor.RED + hero.getHealth() + " / " + hero.getMaxHealth() +
 						  "\n" + ChatColor.DARK_RED + "Lvl/Exp: " + ChatColor.RED + hero.getLevel(primclass) + " / " + xpprim;
 				
@@ -107,8 +107,8 @@ public class HeroesHUDPlayerListener implements Listener {
 			int xpprim = (int)Math.round(hero.currentXPToNextLevel(primclass));
 			int xpsec = (int)Math.round(hero.currentXPToNextLevel(secclass));
 			
-			if (hero != null) {
-			
+			if (hero != null) {	
+				
 				String text = primclass + ": " + ChatColor.RED + hero.getHealth() + " / " + hero.getMaxHealth() +
 						  "\n" + ChatColor.DARK_RED + "Lvl/Exp: " + ChatColor.RED + hero.getLevel(primclass) + " / " + xpprim;
 				
@@ -138,7 +138,7 @@ public class HeroesHUDPlayerListener implements Listener {
 		int xpsec = (int)Math.round(hero.currentXPToNextLevel(secclass));
 		
 		if (hero != null) {
-		
+			
 			String text = primclass + ": " + ChatColor.RED + hero.getHealth() + " / " + hero.getMaxHealth() +
 					  "\n" + ChatColor.DARK_RED + "Lvl/Exp: " + ChatColor.RED + hero.getLevel(primclass) + " / " + xpprim;
 			

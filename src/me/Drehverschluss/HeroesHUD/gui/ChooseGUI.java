@@ -22,11 +22,11 @@ public class ChooseGUI extends GenericWindow {
 	private HeroesHUD plugin;
 	private Button buttonConfirm;
 	private Button buttonCancel;
-	private Button buttonBack;
+	private Button buttonSpez;
 	private SpoutPlayer spoutp;
 	private final int VERTICAL_SPACE = 2, HORIZONTAL_SPACE = 75;
 	
-	private String abc;
+	private String heroName1;
 	
 	public ChooseGUI(HeroesHUD plugin, SpoutPlayer spoutp, String choosenClass) {
 		this.plugin = plugin;
@@ -63,13 +63,13 @@ public class ChooseGUI extends GenericWindow {
 		buttonCancel.setDirty(true);
 		buttonCancel.setAutoDirty(true);
 		
-		buttonBack = new GenericButton();
-		buttonBack.setText("Spezialisations");
-		buttonBack.setWidth(GenericLabel.getStringWidth(buttonBack.getText()) + 5 + 30).setHeight(GenericLabel.getStringHeight(buttonBack.getText()) + 5);
-		buttonBack.setX(backgroundClasses.getX() + 123);
-		buttonBack.setY(backgroundClasses.getY() + 150 + buttonBack.getHeight());
-		buttonBack.setDirty(true);
-		buttonBack.setAutoDirty(true);
+		buttonSpez = new GenericButton();
+		buttonSpez.setText("Spezialisations");
+		buttonSpez.setWidth(GenericLabel.getStringWidth(buttonSpez.getText()) + 5 + 30).setHeight(GenericLabel.getStringHeight(buttonSpez.getText()) + 5);
+		buttonSpez.setX(backgroundClasses.getX() + 123);
+		buttonSpez.setY(backgroundClasses.getY() + 150 + buttonSpez.getHeight());
+		buttonSpez.setDirty(true);
+		buttonSpez.setAutoDirty(true);
 		
 		
 		//Label Beginn
@@ -110,7 +110,7 @@ public class ChooseGUI extends GenericWindow {
 			HeroClass heroClass = plugin.getClassManager().getClass(choosenClass);
 			GenericLabel label2 = new GenericLabel();
 			label2.setText(ChatColor.GOLD + heroClass.getName());
-			abc = heroClass.getName();
+			heroName1 = heroClass.getName();
 			label2.setHeight(GenericLabel.getStringHeight(label2.getText()));
 			label2.setScale(2);
 			label2.setX(basicX);
@@ -135,7 +135,7 @@ public class ChooseGUI extends GenericWindow {
 			
 			//System.out.println(abc);
 			
-			super.attachWidgets(plugin, backgroundClasses, buttonConfirm, buttonCancel, buttonBack, label1, label2, label3);
+			super.attachWidgets(plugin, backgroundClasses, buttonConfirm, buttonCancel, buttonSpez, label1, label2, label3);
 			super.setAnchor(WidgetAnchor.TOP_LEFT);
 		}
 	}
@@ -151,9 +151,9 @@ public class ChooseGUI extends GenericWindow {
 			spoutp.getMainScreen().getActivePopup().close();
 			spoutp.getMainScreen().attachPopupScreen(new HeroesSelectGUI(plugin, spoutp));
 			
-		} else if (button.equals(buttonBack)) {
+		} else if (button.equals(buttonSpez)) {
 			spoutp.chat("/hero cancel");
-			String heroName = plugin.getClassManager().getClass(abc).getName();
+			String heroName = plugin.getClassManager().getClass(heroName1).getName();
 			System.out.println(heroName); //der name wenn man auf spec drückt!
 			spoutp.getMainScreen().getActivePopup().close();
 			spoutp.getMainScreen().attachPopupScreen(new SpecClassesGUI(plugin, spoutp, heroName));

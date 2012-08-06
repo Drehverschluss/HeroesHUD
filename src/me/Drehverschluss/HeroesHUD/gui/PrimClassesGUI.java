@@ -27,9 +27,8 @@ public class PrimClassesGUI extends GenericWindow {
 		int x = (screenWidth / 2) - 170;
 		int y = (screenHeight / 2) - 100;
 		
-		GenericTexture backgroundClasses = new GenericTexture();
-		
 		// BackgroundClasses!
+		GenericTexture backgroundClasses = new GenericTexture();
 		backgroundClasses.setUrl(plugin.HeroesSelectGuiBackgroundClasses);
 		backgroundClasses.setX(x).setY(y);
 		backgroundClasses.setWidth(340).setHeight(200);

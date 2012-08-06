@@ -3,8 +3,6 @@ package me.Drehverschluss.HeroesHUD;
 import me.Drehverschluss.HeroesHUD.Listener.HeroesHUDPlayerListener;
 import me.Drehverschluss.HeroesHUD.gui.HeroesHUDGUI;
 import me.Drehverschluss.HeroesHUD.gui.HeroesSelectGUI;
-import me.Drehverschluss.HeroesHUD.gui.PrimClassesGUI;
-
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -24,7 +22,6 @@ public class HeroesHUD extends JavaPlugin{
 	private CharacterManager heroManager;
 	private HeroClassManager classManager;
 	private HeroesHUDGUI hhgui;
-	private PrimClassesGUI pcgui;
 	
 	public String HeroesSelectGuiBackgroundMain;
 	public String HeroesSelectGuiBackgroundClasses;
@@ -53,10 +50,6 @@ public class HeroesHUD extends JavaPlugin{
     
     public HeroesHUDGUI getGUI() {
     	return hhgui;
-    }
-    
-    public PrimClassesGUI getPrimClass() {
-    	return pcgui;
     }
 
 	@Override
