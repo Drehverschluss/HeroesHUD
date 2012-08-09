@@ -102,7 +102,7 @@ public class HeroesHUD extends JavaPlugin{
 			Player player = (Player) sender;
 			SpoutPlayer spoutp = SpoutManager.getPlayer(player);
 			
-			if(cmd.getName().equalsIgnoreCase("hsg")) {
+			if(cmd.getName().equalsIgnoreCase("cs")) {
 				if(args.length == 0) {
 					spoutp.getMainScreen().attachPopupScreen(new HeroesSelectGUI(this, spoutp));
 				}

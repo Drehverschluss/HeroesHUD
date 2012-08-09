@@ -5,6 +5,7 @@ Simply type in chat "/hsg" and the GUI opens.
 Support ups to 18 Different Class Buttons.
 Support for Spezialclasses to only become a list from available classes for the MasteredClass.
     
+    V1.5.1 - Changed Command from "/hsg" to "/cs" for ClassSelection.
     V1.5 - Version Release! Select GUI is DONE!
     	 - Bug fix for Spezialisation Page when you try to get a Profession Spec!
     	 - Some Code cleanup.

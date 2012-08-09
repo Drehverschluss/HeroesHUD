@@ -1,8 +1,8 @@
 name: HeroesHUD
-version: 1.5
+version: 1.5.1
 main: me.Drehverschluss.HeroesHUD.HeroesHUD
 depend: [ Heroes,Spout ]
 commands:
-    hsg:
+    cs:
         description: Opens a very special selection Menu for Heroes
         usage: /<command>
