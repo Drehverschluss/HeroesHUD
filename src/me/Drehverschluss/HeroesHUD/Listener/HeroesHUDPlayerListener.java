@@ -182,6 +182,7 @@ public class HeroesHUDPlayerListener implements Listener {
 			plugin.getGUI().updateLabel(sp,text);
 		}
 	}
+
 	
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onExpChange(ExperienceChangeEvent event) {

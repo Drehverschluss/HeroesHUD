@@ -98,11 +98,11 @@ public class HeroesHUD extends JavaPlugin{
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if ((sender instanceof Player)) {
-			
+								
 			Player player = (Player) sender;
 			SpoutPlayer spoutp = SpoutManager.getPlayer(player);
 			
-			if(cmd.getName().equalsIgnoreCase("cs")) {
+			if(cmd.getName().equalsIgnoreCase("csg")) {
 				if(args.length == 0) {
 					spoutp.getMainScreen().attachPopupScreen(new HeroesSelectGUI(this, spoutp));
 				}
